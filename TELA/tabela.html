@@ -1,0 +1,51 @@
+<link rel = "stylesheet"
+href = "tabela.css"/> 
+<a link href = "file:///home/operador/%C3%81rea%20de%20Trabalho/Gest%C3%A3o%20de%20gasto/GEST%C3%83O%20DE%20CONTA/Gestaodeconta.html"> 
+  VOLTAR</a>
+<h1 id="mes">
+</h1 >
+<table > 
+<thead> 
+<tr>
+  <th>Data</th> 
+  <th>Descrição</th>
+  <th>Entrada</th>
+  <th>Saída</th>
+  <th>Total</th> 
+  <th>Excluir</th>
+  </tr></thead> 
+  <tbody>
+    <td>
+      </td>
+    <td>
+      </td>
+    <td>      
+      </td>
+    <td>      
+      </td> 
+    <td>
+      </td>
+  </tr>
+    <tr>
+  <td>
+  </td>
+    <td>
+    </td> 
+  <td>  
+    </td> 
+    <td> 
+    </td> 
+    <td>
+    </td>
+    <td>
+    </td> 
+  </tr> <link rel="stylesheet" href="tabela.js"/>
+</tbody>
+</table>
+<script >
+	const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+const mes = urlParams.get("mes");
+document.querySelector("#mes").innerText = mes;
+</script>
