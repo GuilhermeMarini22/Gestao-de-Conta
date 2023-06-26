@@ -1,12 +1,14 @@
 const table = document.querySelector("table"),
   tbody = table.querySelector("tbody"),
   rows = tbody.querySelectorAll("tr");
+
 localStorage.getItem("values");
+
 var values;
 function adicionarConta(e, t, a, o, n, l) {
   criaLinha(e, t, a, o, n, l),
     (lista = { data: e, descricao: t, entrada: a, saida: o, saldo: n }),
-    adicionarRegistro(lista);
+    //adicionarRegistro(lista);
 }
 function criaLinha(e, t, a, o, n, l) {
   const r = document.createElement("tr"),
@@ -35,11 +37,12 @@ function criaLinha(e, t, a, o, n, l) {
     (saldoTotal += n),
     (l.textContent = saldoTotal.toFixed(2));
 }
-void 0 === localStorage.getItem("values") &&
-  localStorage.setItem("values", JSON.stringify(new Array())),
+
+void 0 === localStorage.getItem("valuesFiltered") &&
+  localStorage.setItem("valuesFiltered", JSON.stringify(new Array())),
   (window.onload = function () {
     total.textContent = saldoTotal.toFixed(2);
-    var e = JSON.parse(localStorage.getItem("values"));
+    var e = JSON.parse(localStorage.getItem("valuesFiltered"));
     null != e &&
       e
         .sort((e, t) => e.data > t.data)
@@ -47,7 +50,7 @@ void 0 === localStorage.getItem("values") &&
           criaLinha(e.data, e.descricao, e.entrada, e.saida, e.saldo, total);
         });
   }),
-  (values = localStorage.getItem("values")) &&
+  (values = localStorage.getItem("valuesFiltered")) &&
     (valuesParsed = JSON.parse(values)),
   formConta.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -60,43 +63,6 @@ void 0 === localStorage.getItem("values") &&
     saldoTotal += saldo;
     total.textContent = saldoTotal.toFixed(2);
   }),
-let mesBotao = window.location.assign("?mes=JANEIRO"),
-  mes;
-switch (mesBotao) {
-  case "JANEIRO":
-    mes = 1;
-    break;
-  case "FEVEREIRO":
-    mes = 2;
-    break;
-  case "MARÇO":
-    mes = 3;
-    break;
-  case "ABRIL":
-    mes = 4;
-    break;
-  case "MAIO":
-    mes = 5;
-    break;
-  case "JUNHO":
-    mes = 6;
-    break;
-  case "JULHO":
-    mes = 7;
-    break;
-  case "AGOSTO":
-    mes = 8;
-    break;
-  case "SETEMBRO":
-    mes = 9;
-    break;
-  case "OUTUBRO":
-    mes = 10;
-    break;
-  case "NOVEMBRO":
-    mes = 11;
-    break;
-  case "DEZEMBRO":
-    mes = 12;
-}
-console.log(mes);
+
+const valuesFiltered = JSON.parse(localStorage.getItem("valuesFiltered"));
+
